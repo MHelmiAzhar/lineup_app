@@ -8,6 +8,7 @@ import { ConfigModule } from '@nestjs/config';
 import { MulterModule } from '@nestjs/platform-express';
 import { FILE_UPLOAD_DIR } from './common/constants/file';
 import { MongooseModule } from '@nestjs/mongoose';
+import { StatisticModule } from './statistic/statistic.module';
 
 @Module({
   imports: [
@@ -27,6 +28,7 @@ import { MongooseModule } from '@nestjs/mongoose';
       limits: { fieldSize: 1000 * 1000 * 2 },
     }),
     MongooseModule.forRoot(process.env.DB_URI),
+    StatisticModule,
   ],
 })
 export class AppModule {}

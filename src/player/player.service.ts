@@ -44,6 +44,12 @@ export class PlayerService {
     return res;
   }
 
+  async findPlayerPosition(position: string) {
+    const res = await this.playerModel.find({ position });
+    if (!res) throw new NotFoundException('Data Not Found');
+    return res;
+  }
+
   async update(id: string, updatePlayerDto: UpdatePlayerDto, image: any) {
     let payload = { ...updatePlayerDto };
     if (image) {

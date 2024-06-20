@@ -52,6 +52,11 @@ export class PlayerController {
     return this.playerService.findOne(id);
   }
 
+  @Get('position/:position')
+  findPlayerPosition(@Param('position') position: string) {
+    return this.playerService.findPlayerPosition(position);
+  }
+
   @Patch(':id')
   @ApiConsumes('multipart/form-data')
   @ApiBody({
