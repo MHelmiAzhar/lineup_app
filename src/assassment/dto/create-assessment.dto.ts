@@ -35,6 +35,10 @@ export class AssessmentCreateDto {
   player_name: string;
 
   @ApiProperty()
+  @IsString()
+  aspect_name: string;
+
+  @ApiProperty()
   @IsArray()
   @ValidateNested({ each: true })
   @Type(() => AspectDto)

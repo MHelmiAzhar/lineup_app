@@ -31,6 +31,10 @@ export class StatisticController {
   findOne(@Param('id') id: string) {
     return this.statisticService.findOne(id);
   }
+  @Get('name/:name')
+  findByName(@Param('name') name: string) {
+    return this.statisticService.findByName(name);
+  }
 
   @Patch(':id')
   update(

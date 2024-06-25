@@ -25,6 +25,12 @@ export class StatisticService {
     return res;
   }
 
+  async findByName(name: string) {
+    const res = await this.statisticModel.findOne({ player_name: name });
+    if (!res) throw new NotFoundException('Data Not Found');
+    return res;
+  }
+
   async update(id: string, updateStatisticDto: UpdateStatisticDto) {
     const res = await this.statisticModel.findByIdAndUpdate(
       id,

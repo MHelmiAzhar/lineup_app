@@ -15,6 +15,8 @@ export class Assessment extends Document {
   posisi: Position;
   @Prop()
   player_name: string;
+  @Prop()
+  aspect_name: string;
   @Prop({ type: [schemaObject.Types.Mixed], required: true })
   aspect: Record<string, any>[];
 }
