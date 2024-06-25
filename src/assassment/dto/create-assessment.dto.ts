@@ -9,22 +9,18 @@ import { Type } from 'class-transformer';
 import { Position } from '../../enum/position.enum';
 import { ApiProperty } from '@nestjs/swagger';
 
-// DTO untuk Aspect
+// DTO for Aspect
 class AspectDto {
   @ApiProperty()
-  @IsString()
-  aspect_name: string;
+  @IsObject()
+  target: Record<string, any>; // Adding target property
 
   @ApiProperty()
   @IsObject()
-  core_factor: Record<string, any>;
-
-  @ApiProperty()
-  @IsObject()
-  secondary_factor: Record<string, any>;
+  criteria: Record<string, any>;
 }
 
-// DTO untuk Assessment
+// DTO for Assessment
 export class AssessmentCreateDto {
   @ApiProperty()
   @IsEnum(Position)
@@ -38,7 +34,7 @@ export class AssessmentCreateDto {
   @IsString()
   aspect_name: string;
 
-  @ApiProperty()
+  @ApiProperty({ type: [AspectDto] }) // Ensuring aspect is an array of AspectDto
   @IsArray()
   @ValidateNested({ each: true })
   @Type(() => AspectDto)
