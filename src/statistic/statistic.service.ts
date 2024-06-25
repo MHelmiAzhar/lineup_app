@@ -26,7 +26,7 @@ export class StatisticService {
   }
 
   async findByName(name: string) {
-    const res = await this.statisticModel.findOne({ player_name: name });
+    const res = await this.statisticModel.find({ player_name: name });
     if (!res) throw new NotFoundException('Data Not Found');
     return res;
   }

@@ -31,10 +31,6 @@ export class AspectController {
   findOne(@Param('id') id: string) {
     return this.aspectService.findOne(id);
   }
-  @Get('name/:name')
-  findByName(@Param('name') name: string) {
-    return this.aspectService.findByName(name);
-  }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateAspectDto: UpdateAspectDto) {

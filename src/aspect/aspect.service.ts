@@ -24,11 +24,6 @@ export class AspectService {
     if (!res) throw new NotFoundException('Data Not Found');
     return res;
   }
-  async findByName(name: string) {
-    const res = await this.aspectModel.findOne({ assessment_aspect: name });
-    if (!res) throw new NotFoundException('Data Not Found');
-    return res;
-  }
 
   async update(id: string, updateAspectDto: UpdateAspectDto) {
     const res = await this.aspectModel.findByIdAndUpdate(id, updateAspectDto, {

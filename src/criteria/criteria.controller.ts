@@ -31,6 +31,14 @@ export class CriteriaController {
   findOne(@Param('id') id: string) {
     return this.criteriaService.findOne(id);
   }
+  @Get('name/:name')
+  findByName(@Param('name') name: string) {
+    return this.criteriaService.findByName(name);
+  }
+  @Get('target/:target')
+  findByTarget(@Param('target') target: string) {
+    return this.criteriaService.findByTarget(target);
+  }
 
   @Patch(':id')
   update(

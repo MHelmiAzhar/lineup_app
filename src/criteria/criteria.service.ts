@@ -24,6 +24,17 @@ export class CriteriaService {
     return res;
   }
 
+  async findByName(name: string) {
+    const res = await this.citeriaModel.find({ assessment_aspect: name });
+    if (!res) throw new NotFoundException('Data Not Found');
+    return res;
+  }
+  async findByTarget(target: string) {
+    const res = await this.citeriaModel.find({ target });
+    if (!res) throw new NotFoundException('Data Not Found');
+    return res;
+  }
+
   async update(id: string, updateCriterionDto: UpdateCriterionDto) {
     const res = await this.citeriaModel.findByIdAndUpdate(
       id,
